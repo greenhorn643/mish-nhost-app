@@ -1,3 +1,4 @@
+import withAuth from '../withAuth'
 import styles from '../styles/pages/Home.module.css';
 
 import { useUserContext } from '../UserProvider';
@@ -13,12 +14,14 @@ const Home = () => {
         <title>Dashboard - Nhost</title>
       </Head>
 
+      
+
       <div>
         <h2 className={styles.title}>Dashboard</h2>
 
         <p className={styles['welcome-text']}>
           Welcome, {user?.metadata?.firstName || 'stranger'}{' '}
-          <span role="img" alt="hello">
+          <span role="img" data-alt="hello">
             👋
           </span>
         </p>
@@ -31,4 +34,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default withAuth(Home);

@@ -1,4 +1,5 @@
 import styles from '../styles/components/Layout.module.css';
+import { useSignOut } from '@nhost/nextjs';
 
 import React, { Fragment } from 'react';
 import { useUserContext } from '../UserProvider';
@@ -10,11 +11,15 @@ import {
   HomeIcon,
   LogoutIcon,
   UserIcon,
+  BriefcaseIcon,
+  PlusIcon,
+  UsersIcon,
 } from '@heroicons/react/outline';
 import Avatar from './Avatar';
 
 const Layout = ({ children = null }) => {
   const { user } = useUserContext();
+  const { signOut } = useSignOut()
 
   const menuItems = [
     {
@@ -28,8 +33,13 @@ const Layout = ({ children = null }) => {
       icon: UserIcon,
     },
     {
+      label: 'Snapchat Accounts',
+      href: '/snapchat-accounts',
+      icon: UsersIcon,
+    },
+    {
       label: 'Logout',
-      onClick: () => null,
+      onClick: signOut,
       icon: LogoutIcon,
     },
   ];
